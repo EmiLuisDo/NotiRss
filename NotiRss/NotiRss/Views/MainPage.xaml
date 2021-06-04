@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotiRSS.Views.MainPage">
+
+    <StackLayout>
+        <Button Clicked="Button_ClickedAsync" Text="Enter"></Button>
+
+        <!--<ListView ItemsSource="Binding News" HasUnevenRows="True" 
+                  ItemSelected="ListView_ItemSelected" 
+                  ItemTapped="ListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image Grid.RowSpan="2"
+                                   Source="Binding Img"
+                                   Aspect="AspectFill"
+                                   HeightRequest="60"
+                                   WidthRequest="60"/>
+                            <Label  Grid.Column="1"
+                                    Text="Binding Title"
+                                    FontAttributes="Bold"/>
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="Binding PubDate"
+                                   VerticalOptions="End"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+    </StackLayout>
+
+</ContentPage>
