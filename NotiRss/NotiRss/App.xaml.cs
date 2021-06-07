@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using NotiRSS.Views;
+using NotiRSS.Services;
+using System.Net.Http;
 
 namespace NotiRss
 {
@@ -11,7 +13,7 @@ namespace NotiRss
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage( new MainPage( new NewsService(new HttpClient(), "https://es.investing.com/rss/news_288.rss", new ItemToNVModelService()) ));
         }
 
         protected override void OnStart()
