@@ -37,6 +37,14 @@ namespace NotiRSS.Services
                 string stringNews = await _HttpClient.GetStringAsync(Path);
                 StringReader stringReader = new StringReader(stringNews);
                 await Task.Run(() => rss = (MRss)serializer.Deserialize(stringReader));
+
+                //Console.WriteLine("Anda1");
+                //Stream str = await _HttpClient.GetStreamAsync(Path);
+                //Console.WriteLine("Anda2");
+                //Console.WriteLine(str.ToString());
+                //Console.WriteLine("Anda3");
+                //var obj = (MRss)serializer.Deserialize(str);
+                //Console.WriteLine("No anda");
             }
             catch (Exception e)
             {

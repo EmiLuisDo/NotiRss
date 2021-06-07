@@ -60,7 +60,8 @@ namespace NotiRSS.ViewModels
 
         public async Task InicializarAsync() 
         {
-            this.News = new ObservableCollection<VMNew>( await this._NewsService.getNewsAsync());
+            List<VMNew> lnews = await this._NewsService.getNewsAsync();
+            this.News = new ObservableCollection<VMNew>(lnews);
         }
 
         public VMNews(NewsService newsService)

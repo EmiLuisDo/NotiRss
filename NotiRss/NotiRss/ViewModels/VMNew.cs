@@ -12,5 +12,12 @@ namespace NotiRSS.ViewModels
         public string Author { get; set;}
         public DateTime PubDate { get; set;}
         public string Link { get; set; }
+
+        public string Detail {
+            set { }
+            get {
+                return "Por " + this.Author + ", Publicado: " + this.PubDate;
+            } 
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace NotiRSS.Services
             newVModel.PubDate = Convert.ToDateTime( item.PubDate );
             newVModel.Img = item.Enclosure.Url;
             newVModel.Link = item.Link;
+            newVModel.Author = item.Author;
             return newVModel;
         }
     }
