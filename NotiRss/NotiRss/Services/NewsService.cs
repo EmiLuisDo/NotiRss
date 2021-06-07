@@ -20,9 +20,9 @@ namespace NotiRSS.Services
 
         public async Task<List<VMNew>> getNewsAsync() 
         {
-            List < VMNew > noticias= new List<VMNew>();
+            List< VMNew > noticias= new List<VMNew>();
             MRss rss = await getRssAsync();
-            foreach (MItem item in rss.Channel.Items) 
+            foreach (MItem item in rss.Channel.Items)
             {
                 noticias.Add(_itemToNVModelService.ItemToNVModel(item));
             }
@@ -34,9 +34,6 @@ namespace NotiRSS.Services
             try
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(MRss));
-                //Stream streamNews = await _HttpClient.GetStreamAsync(Path);
-                //await Task.Run(() => { rss = (Rss)serializer.Deserialize(streamNews); });
-
                 string stringNews = await _HttpClient.GetStringAsync(Path);
                 StringReader stringReader = new StringReader(stringNews);
                 await Task.Run(() => rss = (MRss)serializer.Deserialize(stringReader));
