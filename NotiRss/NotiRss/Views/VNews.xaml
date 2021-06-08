@@ -17,11 +17,28 @@
                     IsRefreshing="{Binding IsRefreshing}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ImageCell ImageSource="{Binding Img}"
-                                   Text="{Binding Title}"
-                                   Detail="{Binding Detail}"
-                                   >
-                     </ImageCell>
+                    <ViewCell >
+                        <Frame CornerRadius="10"
+                               HasShadow="True"
+                               Padding="0"
+                               Margin="5"
+                               BackgroundColor="White"
+                               BorderColor="Black">
+                            <StackLayout>
+                                <Image Source="{Binding Img}"
+                                       Aspect="AspectFill"/>
+                                <BoxView Color="Gray"
+                                         HeightRequest="2"
+                                         HorizontalOptions="Fill" />
+                                <Label Text="{Binding Title}"
+                                       FontSize="Medium"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Detail}"
+                                       FontSize="Subtitle"
+                                       HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
