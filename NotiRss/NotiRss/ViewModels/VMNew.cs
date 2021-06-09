@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace NotiRSS.ViewModels
+namespace NotiRss.ViewModels
 {
     public class VMNew
     {

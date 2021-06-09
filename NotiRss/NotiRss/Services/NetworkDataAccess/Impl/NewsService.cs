@@ -1,22 +1,30 @@
-﻿using NotiRSS.ViewModels;
+﻿using NotiRss.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-using NotiRSS.Models;
+using NotiRss.Models;
 using System.Xml.Serialization;
 using System.IO;
+using NotiRss.Services.NetworkDataAccess;
+using NotiRSS.Services.Other;
 
-namespace NotiRSS.Services
+namespace NotiRss.Services.NetworkDataAccess.Impl
 {
-    public class NewsService
+    public class NewsService : INewsService
     {
         public string Path { get; set; }
         public HttpClient _HttpClient { get; set; }
 
-        public ItemToNVModelService _itemToNVModelService;
+        public ItemToVMNew _itemToNVModelService;
+        public NewsService(HttpClient HttpClient, string path, ItemToVMNew itemToNVModelService)
+        {
+            this._itemToNVModelService = itemToNVModelService;
+            this._HttpClient = HttpClient;
+            this.Path = path;
+        }
 
         public async Task<List<VMNew>> getNewsAsync() 
         {
@@ -24,12 +32,12 @@ namespace NotiRSS.Services
             MRss rss = await getRssAsync();
             foreach (MItem item in rss.Channel.Items)
             {
-                noticias.Add(_itemToNVModelService.ItemToNVModel(item));
+                noticias.Add(_itemToNVModelService.ConvertItemToVMNew(item));
             }
             return noticias;
         }
 
-        public async Task<MRss> getRssAsync() {
+        private async Task<MRss> getRssAsync() {
             MRss rss = null;
             try
             {
@@ -37,7 +45,6 @@ namespace NotiRSS.Services
                 string stringNews = await _HttpClient.GetStringAsync(Path);
                 StringReader stringReader = new StringReader(stringNews);
                 await Task.Run(() => rss = (MRss)serializer.Deserialize(stringReader));
-
             }
             catch (Exception e)
             {
@@ -47,12 +54,6 @@ namespace NotiRSS.Services
             return rss;
         }
 
-        public NewsService(HttpClient HttpClient, string path, ItemToNVModelService itemToNVModelService)
-        {
-            this._itemToNVModelService = itemToNVModelService;
-            this._HttpClient = HttpClient;
-            this.Path = path;
-        }
 
     }
 }

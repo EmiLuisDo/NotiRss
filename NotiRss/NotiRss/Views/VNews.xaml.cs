@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using NotiRSS.Services;
 using System.Net.Http;
-using NotiRSS.ViewModels;
+using NotiRss.ViewModels;
 using Xamarin.Essentials;
 
-namespace NotiRSS.Views
+namespace NotiRss.Views
 {
     public partial class VNews : ContentPage
     {

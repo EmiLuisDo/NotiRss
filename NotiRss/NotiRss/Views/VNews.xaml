@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NotiRSS.Views.VNews" Title="NotiRss">
+             x:Class="NotiRss.Views.VNews" Title="NotiRss">
 
     <ContentPage.ToolbarItems>
 
@@ -33,8 +33,8 @@
                                        Padding="7, 0"/>
                                 <BoxView Color="Gray"
                                          HeightRequest="2"
-                                         HorizontalOptions="Fill" />
-                                <Label Text="{Binding Detail}"
+                                         HorizontalOptions="Fill"/>
+                                <Label Text="{Binding PubDate}"
                                        FontSize="Subtitle"
                                        HorizontalOptions="CenterAndExpand"
                                        MaxLines="1"

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace NotiRSS.Models
+namespace NotiRss.Models
 {
 	[XmlRoot(ElementName = "item")]
 	public class MItem

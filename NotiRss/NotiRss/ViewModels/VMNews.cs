@@ -1,5 +1,5 @@
 ﻿
-using NotiRSS.Services;
+using NotiRss.Services.NetworkDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace NotiRSS.ViewModels
+namespace NotiRss.ViewModels
 {
     public class VMNews : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
         private ObservableCollection<VMNew> news = new ObservableCollection<VMNew>();
-        private NewsService _newsService;
-        public NewsService _NewsService {
+        private INewsService _newsService;
+        public INewsService _NewsService {
             get { return _newsService; }
             set { this._newsService = value; }
         }
@@ -47,7 +47,6 @@ namespace NotiRSS.ViewModels
                     IsRefreshing = true;
                     this.News.Clear();
                     this.News = new ObservableCollection<VMNew>(await _NewsService.getNewsAsync());
-
                     IsRefreshing = false;
                 });
             }
@@ -64,7 +63,7 @@ namespace NotiRSS.ViewModels
             this.News = new ObservableCollection<VMNew>(lnews);
         }
 
-        public VMNews(NewsService newsService)
+        public VMNews(INewsService newsService)
         {
             this._NewsService = newsService;
             InicializarAsync();

@@ -1,10 +1,13 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using NotiRSS.Views;
+using NotiRss.Views;
 using NotiRSS.Services;
 using System.Net.Http;
-using NotiRSS.ViewModels;
+using NotiRss.ViewModels;
+using NotiRss.Services.NetworkDataAccess;
+using NotiRss.Services.NetworkDataAccess.Impl;
+using NotiRss.Services.Other;
 
 namespace NotiRss
 {
@@ -14,7 +17,7 @@ namespace NotiRss
         {
             InitializeComponent();
 
-            NewsService ns = new NewsService(new HttpClient(), "https://es.investing.com/rss/news_288.rss", new ItemToNVModelService());
+            INewsService ns = new NewsServiceM(new HttpClient(), "https://es.investing.com/rss/news_288.rss", new RssSchemaToVMNew());
             VMNews vmnews = new VMNews(ns);
             MainPage = new NavigationPage( new VNews(vmnews));
         }

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using NotiRSS.ViewModels;
-using NotiRSS.Models;
+using NotiRss.ViewModels;
+using NotiRss.Models;
 
-namespace NotiRSS.Services
+namespace NotiRSS.Services.Other
 {
-    public class ItemToNVModelService 
+    public class ItemToVMNew 
     {
-        public VMNew ItemToNVModel(MItem item) {
+        public VMNew ConvertItemToVMNew(MItem item) {
             VMNew newVModel = new VMNew();
             newVModel.Title = item.Title;
             newVModel.PubDate = Convert.ToDateTime( item.PubDate );
