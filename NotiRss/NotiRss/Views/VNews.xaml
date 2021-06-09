@@ -27,15 +27,18 @@
                             <StackLayout>
                                 <Image Source="{Binding Img}"
                                        Aspect="AspectFill"/>
+                                <Label Text="{Binding Title}"
+                                       FontSize="Medium"
+                                       HorizontalOptions="CenterAndExpand"
+                                       Padding="7, 0"/>
                                 <BoxView Color="Gray"
                                          HeightRequest="2"
                                          HorizontalOptions="Fill" />
-                                <Label Text="{Binding Title}"
-                                       FontSize="Medium"
-                                       HorizontalOptions="CenterAndExpand"/>
                                 <Label Text="{Binding Detail}"
                                        FontSize="Subtitle"
-                                       HorizontalOptions="CenterAndExpand"/>
+                                       HorizontalOptions="CenterAndExpand"
+                                       MaxLines="1"
+                                       Padding="5,0"/>
                             </StackLayout>
                         </Frame>
                     </ViewCell>

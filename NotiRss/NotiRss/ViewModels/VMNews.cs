@@ -45,7 +45,7 @@ namespace NotiRSS.ViewModels
                 return new Command(async () =>
                 {
                     IsRefreshing = true;
-
+                    this.News.Clear();
                     this.News = new ObservableCollection<VMNew>(await _NewsService.getNewsAsync());
 
                     IsRefreshing = false;
@@ -67,6 +67,7 @@ namespace NotiRSS.ViewModels
         public VMNews(NewsService newsService)
         {
             this._NewsService = newsService;
+            InicializarAsync();
         }
 
 

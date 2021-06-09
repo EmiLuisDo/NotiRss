@@ -16,7 +16,6 @@ namespace NotiRss
 
             NewsService ns = new NewsService(new HttpClient(), "https://es.investing.com/rss/news_288.rss", new ItemToNVModelService());
             VMNews vmnews = new VMNews(ns);
-            vmnews.InicializarAsync();
             MainPage = new NavigationPage( new VNews(vmnews));
         }
 
