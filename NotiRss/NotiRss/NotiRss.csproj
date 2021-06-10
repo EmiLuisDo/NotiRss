@@ -22,8 +22,4 @@
       <DependentUpon>VNews.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\LocalDataAccess\Impl\" />
-  </ItemGroup>
 </Project>

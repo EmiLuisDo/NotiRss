@@ -30,5 +30,10 @@ namespace NotiRss.Views
             VMNew noticiaSeleccionada = e.Item as VMNew;
             await Xamarin.Essentials.Browser.OpenAsync(noticiaSeleccionada.Link);
         }
+
+        private void FavouriteButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

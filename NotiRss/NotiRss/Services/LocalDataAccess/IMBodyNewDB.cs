@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace NotiRss.Services.LocalDataAccess
 {
-    public interface IBodyNewDB
+    public interface IMBodyNewDB
     {
         Task Init();
         Task Add(MBodyNew mBodyNew );
-        Task Remove(int id);
+        Task Remove(MBodyNew bodyNew);
         Task Get(int id);
-        Task GetAll();
+        Task<IEnumerable<MBodyNew>> GetAll();
     }
 }

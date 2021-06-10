@@ -7,18 +7,25 @@ using Microsoft.Toolkit.Parsers.Rss;
 using NotiRss.Services.Other;
 using NotiRss.Models;
 using NotiRss.ViewModels;
+using NotiRss.Services.LocalDataAccess;
 
 namespace NotiRss.Services.NetworkDataAccess.Impl
 {
     public class NewsServiceM : INewsService
     {
-        public string Path { get; set; }
-        public HttpClient _HttpClient { get; set; }
+        private IMNewDB newDB;
 
-        public NewsServiceM(HttpClient HttpClient, string path)
+        public string Path { get; set; }
+
+        public NewsServiceM(string path)
         {
-            this._HttpClient = HttpClient;
             this.Path = path;
+        }
+
+        public NewsServiceM(string path, IMNewDB newDB)
+        {
+            this.Path = path;
+            this.newDB = newDB;
         }
 
         public async Task<List<VMNew>> getNewsAsync()
@@ -39,7 +46,10 @@ namespace NotiRss.Services.NetworkDataAccess.Impl
             IEnumerable<RssSchema> parse = null;
             try
             {
-                feed = await _HttpClient.GetStringAsync(Path);
+                using (var client = new HttpClient())
+                {
+                    feed = await client.GetStringAsync(Path);
+                }
                 if (feed != null) 
                 {
                     RssParser parser = new RssParser();
@@ -48,6 +58,7 @@ namespace NotiRss.Services.NetworkDataAccess.Impl
             }
             catch (Exception e)
             {
+                Console.WriteLine("__Exception");
                 Console.WriteLine(e.Message);
                 Console.WriteLine(e.StackTrace);
             }

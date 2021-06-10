@@ -27,11 +27,19 @@
                             <StackLayout>
                                 <Image Source="{Binding Img}"
                                        Aspect="AspectFill"/>
-                                <Label Text="{Binding Title}"
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Title}"
                                        FontSize="Medium"
                                        HorizontalOptions="CenterAndExpand"
                                        Padding="7, 0"/>
-                                <BoxView Color="Gray"
+                                    <ImageButton Source="Favorito.png"
+                                                 BackgroundColor="White"
+                                                 Margin="0,0,5,0"
+                                                 x:Name="FavouriteButton"
+                                                 Clicked="FavouriteButton_Clicked">
+                                    </ImageButton>
+                                </StackLayout>
+                                        <BoxView Color="Gray"
                                          HeightRequest="2"
                                          HorizontalOptions="Fill"/>
                                 <Label Text="{Binding PubDate}"

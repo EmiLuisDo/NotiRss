@@ -10,8 +10,8 @@ namespace NotiRss.Services.LocalDataAccess
     {
         Task Init();
         Task Add(MNew mNew);
-        Task Remove(int id);
-        Task Get(int id);
-        Task GetAll();
+        Task<MNew> Get(int id);
+        Task Remove(MNew mnew);
+        Task<IEnumerable<MNew>> GetAll();
     }
 }
