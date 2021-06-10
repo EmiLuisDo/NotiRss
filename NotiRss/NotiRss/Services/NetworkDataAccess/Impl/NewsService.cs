@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-using NotiRss.Models;
+using NotiRss.Models.Rss;
 using System.Xml.Serialization;
 using System.IO;
 using NotiRss.Services.NetworkDataAccess;
@@ -17,11 +17,8 @@ namespace NotiRss.Services.NetworkDataAccess.Impl
     {
         public string Path { get; set; }
         public HttpClient _HttpClient { get; set; }
-
-        public ItemToVMNew _itemToNVModelService;
-        public NewsService(HttpClient HttpClient, string path, ItemToVMNew itemToNVModelService)
+        public NewsService(HttpClient HttpClient, string path)
         {
-            this._itemToNVModelService = itemToNVModelService;
             this._HttpClient = HttpClient;
             this.Path = path;
         }
@@ -32,7 +29,7 @@ namespace NotiRss.Services.NetworkDataAccess.Impl
             MRss rss = await getRssAsync();
             foreach (MItem item in rss.Channel.Items)
             {
-                noticias.Add(_itemToNVModelService.ConvertItemToVMNew(item));
+                noticias.Add(ItemToVMNew.ConvertItemToVMNew(item));
             }
             return noticias;
         }

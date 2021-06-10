@@ -17,9 +17,9 @@ namespace NotiRss
         {
             InitializeComponent();
 
-            INewsService ns = new NewsServiceM(new HttpClient(), "https://es.investing.com/rss/news_288.rss", new RssSchemaToVMNew());
+            INewsService ns = new NewsServiceM(new HttpClient(), "https://es.investing.com/rss/news_288.rss");
             VMNews vmnews = new VMNews(ns);
-            MainPage = new NavigationPage( new VNews(vmnews));
+            MainPage = new NavigationPage(new VNews(vmnews));
         }
 
         protected override void OnStart()

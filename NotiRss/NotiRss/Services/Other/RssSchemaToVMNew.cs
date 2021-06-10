@@ -6,9 +6,9 @@ using System.Text;
 
 namespace NotiRss.Services.Other
 {
-    public class RssSchemaToVMNew
+    public static class RssSchemaToVMNew
     {
-        public VMNew ConvertRssSchemaToVMNew(RssSchema item)
+        public static VMNew ConvertRssSchemaToVMNew(RssSchema item)
         {
             VMNew newVModel = new VMNew();
             newVModel.Title = item.Title;

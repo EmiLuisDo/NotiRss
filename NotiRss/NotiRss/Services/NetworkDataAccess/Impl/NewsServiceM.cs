@@ -15,10 +15,8 @@ namespace NotiRss.Services.NetworkDataAccess.Impl
         public string Path { get; set; }
         public HttpClient _HttpClient { get; set; }
 
-        public RssSchemaToVMNew _rssSchemaToVMNew;
-        public NewsServiceM(HttpClient HttpClient, string path, RssSchemaToVMNew rssSchemaToVMNew)
+        public NewsServiceM(HttpClient HttpClient, string path)
         {
-            this._rssSchemaToVMNew = rssSchemaToVMNew;
             this._HttpClient = HttpClient;
             this.Path = path;
         }
@@ -29,7 +27,7 @@ namespace NotiRss.Services.NetworkDataAccess.Impl
             IEnumerable<RssSchema> parse = await getRssAsync();
             foreach (var item in parse)
             {
-                VMNew noticia = _rssSchemaToVMNew.ConvertRssSchemaToVMNew(item);
+                VMNew noticia = RssSchemaToVMNew.ConvertRssSchemaToVMNew(item);
                 noticias.Add(noticia);
             }
             return noticias;
