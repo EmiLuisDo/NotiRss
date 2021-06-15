@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-using SQLite;
-
 namespace NotiRss.Models.Data
 {
     public class MNew
     {
-        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Title { get; set; }
         public string Link { get; set; }

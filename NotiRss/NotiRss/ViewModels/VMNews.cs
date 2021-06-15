@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
+using NotiRss.Services.LocalDataAccess;
 using NotiRss.Services.NetworkDataAccess;
 using System;
 using System.Collections.Generic;
@@ -21,11 +23,15 @@ namespace NotiRss.ViewModels
             get { return _newsService; }
             set { this._newsService = value; }
         }
+
         public ObservableCollection<VMNew> News 
         {
             get { return news; }
             set { news = value; OnPropertyChanged(nameof(News)); }
         }
+
+        private NewContext _newContext;
+        public NewContext _NewsDB { get; set; }
 
         private bool _isRefreshing = false;
         public bool IsRefreshing
@@ -51,11 +57,11 @@ namespace NotiRss.ViewModels
                 });
             }
         }
+
         void OnPropertyChanged(string prop)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop) );
         }
-
 
         public async Task InicializarAsync() 
         {
@@ -65,6 +71,12 @@ namespace NotiRss.ViewModels
 
         public VMNews(INewsService newsService)
         {
+            this._NewsService = newsService;
+            InicializarAsync();
+        }
+        public VMNews(INewsService newsService, NewContext newsDB)
+        {
+            this._NewsDB = newsDB;
             this._NewsService = newsService;
             InicializarAsync();
         }

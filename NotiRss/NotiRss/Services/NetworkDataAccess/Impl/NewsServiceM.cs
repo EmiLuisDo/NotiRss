@@ -8,24 +8,19 @@ using NotiRss.Services.Other;
 using NotiRss.Models;
 using NotiRss.ViewModels;
 using NotiRss.Services.LocalDataAccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace NotiRss.Services.NetworkDataAccess.Impl
 {
     public class NewsServiceM : INewsService
     {
-        private IMNewDB newDB;
+        private DbContext newDB;
 
         public string Path { get; set; }
 
         public NewsServiceM(string path)
         {
             this.Path = path;
-        }
-
-        public NewsServiceM(string path, IMNewDB newDB)
-        {
-            this.Path = path;
-            this.newDB = newDB;
         }
 
         public async Task<List<VMNew>> getNewsAsync()

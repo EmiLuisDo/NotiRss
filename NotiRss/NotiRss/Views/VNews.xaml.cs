@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using System.Net.Http;
 using NotiRss.ViewModels;
 using Xamarin.Essentials;
+using NotiRss.Models.Data;
+using NotiRss.Services.Other;
 
 namespace NotiRss.Views
 {
@@ -32,7 +34,10 @@ namespace NotiRss.Views
 
         private void FavouriteButton_Clicked(object sender, EventArgs e)
         {
-
+            //ImageButton img_btn = sender as ImageButton;
+            //VMNew vmnew = img_btn.BindingContext as VMNew;
+            //MNew mnew = NotiConvert.ToMNew(vmnew);
+            //this._VMNews._NewsDB.Add(mnew);
         }
     }
 }
