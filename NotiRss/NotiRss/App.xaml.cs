@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using NotiRss.Views;
-using NotiRSS.Services;
 using System.Net.Http;
 using NotiRss.ViewModels;
 using NotiRss.Services.NetworkDataAccess;

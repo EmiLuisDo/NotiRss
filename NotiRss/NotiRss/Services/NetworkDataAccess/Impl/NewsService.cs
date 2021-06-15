@@ -9,7 +9,7 @@ using NotiRss.Models.Rss;
 using System.Xml.Serialization;
 using System.IO;
 using NotiRss.Services.NetworkDataAccess;
-using NotiRSS.Services.Other;
+using NotiRss.Services.Other;
 
 namespace NotiRss.Services.NetworkDataAccess.Impl
 {
@@ -29,7 +29,7 @@ namespace NotiRss.Services.NetworkDataAccess.Impl
             MRss rss = await getRssAsync();
             foreach (MItem item in rss.Channel.Items)
             {
-                noticias.Add(ItemToVMNew.ConvertItemToVMNew(item));
+                noticias.Add(NotiConvert.ToVMNew(item));
             }
             return noticias;
         }

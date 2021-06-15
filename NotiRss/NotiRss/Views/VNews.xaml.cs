@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using NotiRSS.Services;
 using System.Net.Http;
 using NotiRss.ViewModels;
 using Xamarin.Essentials;

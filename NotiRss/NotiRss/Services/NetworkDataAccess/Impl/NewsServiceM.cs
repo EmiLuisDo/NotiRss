@@ -34,7 +34,7 @@ namespace NotiRss.Services.NetworkDataAccess.Impl
             IEnumerable<RssSchema> parse = await getRssAsync();
             foreach (var item in parse)
             {
-                VMNew noticia = RssSchemaToVMNew.ConvertRssSchemaToVMNew(item);
+                VMNew noticia = NotiConvert.ToVMNew(item);
                 noticias.Add(noticia);
             }
             return noticias;
