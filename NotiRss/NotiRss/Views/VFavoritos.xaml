@@ -1,60 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NotiRss.Views.VNews" Title="NotiRss">
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="pokeballs_64.png"
-                     Clicked="ToolbarItemPokeballs_Clicked"></ToolbarItem>
-    </ContentPage.ToolbarItems>
-    <StackLayout>
-        <ListView ItemsSource="{Binding News}"
+             x:Class="NotiRss.Views.VFavoritos"
+             xmlns:viewModel="clr-namespace:NotiRss.ViewModels"
+             Title="Favoritos">
+    <ContentPage.BindingContext>
+        <viewModel:VMFavoritos></viewModel:VMFavoritos>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding News}"
                     HasUnevenRows="True"
                     SelectionMode="None"
                     x:Name="LstVwNoticias"
-                    ItemTapped="ListView_ItemTapped"
                     IsPullToRefreshEnabled="True"
                     RefreshCommand="{Binding RefreshCommand}"
                     IsRefreshing="{Binding IsRefreshing}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell >
-                        <Frame CornerRadius="10"
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Frame CornerRadius="10"
                                HasShadow="True"
                                Padding="0"
                                Margin="5"
                                BackgroundColor="White"
                                BorderColor="Black">
-                            <StackLayout>
-                                <Image Source="{Binding Img}"
+                                <StackLayout>
+                                    <Image Source="{Binding Img}"
                                        Aspect="AspectFill"/>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Title}"
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Title}"
                                        FontSize="Medium"
                                        HorizontalOptions="CenterAndExpand"
                                        Padding="7, 0"/>
-                                    <ImageButton Source="pokeball_throwed_64.png"
+                                        <ImageButton Source="pokeball_throwed_64.png"
                                                  Aspect="AspectFit"
                                                  BackgroundColor="White"
                                                  Margin="0,0,5,0"
-                                                 x:Name="FavouriteButton"
-                                                 Clicked="FavouriteButton_Clicked">
-                                    </ImageButton>
-                                </StackLayout>
-                                        <BoxView Color="Gray"
+                                                 x:Name="FavouriteButton">
+                                        </ImageButton>
+                                    </StackLayout>
+                                    <BoxView Color="Gray"
                                          HeightRequest="2"
                                          HorizontalOptions="Fill"/>
-                                <Label Text="{Binding PubDate}"
+                                    <Label Text="{Binding PubDate}"
                                        FontSize="Subtitle"
                                        HorizontalOptions="CenterAndExpand"
                                        MaxLines="1"
                                        Padding="5,0"/>
-                            </StackLayout>
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackLayout>
-
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

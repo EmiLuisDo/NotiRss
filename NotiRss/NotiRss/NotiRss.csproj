@@ -18,8 +18,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\VFavoritos.xaml.cs">
+      <DependentUpon>VFavoritos.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\VNews.xaml.cs">
       <DependentUpon>VNews.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\VFavoritos.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

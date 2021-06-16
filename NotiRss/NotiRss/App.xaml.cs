@@ -11,33 +11,46 @@ using NotiRss.Services.LocalDataAccess;
 using System.IO;
 using Xamarin.Essentials;
 using Microsoft.EntityFrameworkCore;
+using NotiRss.Services.LocalDataAccess.Impl;
 
 namespace NotiRss
 {
     public partial class App : Application
     {
 
-        static NewContext newDB;
+        private static IMBodyNewDB bodyDB;
+        private static IMNewDB newDB;
+
         // Create the database connection as a singleton.
-        public static NewContext NewDB
+        public static IMBodyNewDB BodyDB
+        {
+            get
+            {
+                if (bodyDB == null)
+                {
+                    bodyDB = new MBodyNewDB(Path.Combine(Xamarin.Essentials.FileSystem.AppDataDirectory, "NEWS.db3"));
+                }
+                return bodyDB;
+            }
+        }
+        public static IMNewDB NewDB
         {
             get
             {
                 if (newDB == null)
                 {
-                    newDB = new NewContext();
+                    newDB = new MNewDB(Path.Combine(FileSystem.AppDataDirectory, "NEWS.db3"));
                 }
                 return newDB;
             }
         }
-
         public App()
         {
             InitializeComponent();
             INewsService ns = new NewsServiceM("https://es.investing.com/rss/news_288.rss");
 
-            VMNews vmnews = new VMNews(ns, App.NewDB);
-            MainPage = new NavigationPage(new VNews(vmnews));
+            VMNews vmnews = new VMNews(ns, App.NewDB, App.BodyDB);
+            MainPage = new NavigationPage (new VNews(vmnews));
         }
 
         protected override void OnStart()

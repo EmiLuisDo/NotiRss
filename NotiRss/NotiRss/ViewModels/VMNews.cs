@@ -30,8 +30,10 @@ namespace NotiRss.ViewModels
             set { news = value; OnPropertyChanged(nameof(News)); }
         }
 
-        private NewContext _newContext;
-        public NewContext _NewsDB { get; set; }
+        private IMBodyNewDB _bodysNewsDB;
+        public IMBodyNewDB _BodysNewsDB { get => this._bodysNewsDB; set => this._bodysNewsDB = value; }
+        private IMNewDB _newsDB;
+        public IMNewDB _NewsDB { get => this._newsDB; set => this._newsDB = value; }
 
         private bool _isRefreshing = false;
         public bool IsRefreshing
@@ -74,8 +76,9 @@ namespace NotiRss.ViewModels
             this._NewsService = newsService;
             InicializarAsync();
         }
-        public VMNews(INewsService newsService, NewContext newsDB)
+        public VMNews(INewsService newsService, IMNewDB newsDB, IMBodyNewDB bodysDB)
         {
+            this._BodysNewsDB = bodysDB;
             this._NewsDB = newsDB;
             this._NewsService = newsService;
             InicializarAsync();

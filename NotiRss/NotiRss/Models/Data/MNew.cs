@@ -11,6 +11,7 @@ namespace NotiRss.Models.Data
         public string Link { get; set; }
         public string Author { get; set; }
         public string Img { get; set; }
+        public DateTime PubDate { get; set; }
         public MBodyNew Body { get; set; }
     }
 }

@@ -32,6 +32,17 @@ namespace NotiRss.Services.Other
             return newVModel;
         }
 
+        public static VMNew ToVMNew(MNew mnew)
+        {
+            VMNew vmnew = new VMNew();
+            vmnew.Title = mnew.Title;
+            vmnew.Link = mnew.Link;
+            vmnew.Author = mnew.Author;
+            vmnew.Img = mnew.Img;
+            vmnew.PubDate = mnew.PubDate;
+            return vmnew;
+        }
+
         public static MNew ToMNew( VMNew nw )
         {
             MNew mnew = new MNew();
@@ -39,6 +50,7 @@ namespace NotiRss.Services.Other
             mnew.Author = nw.Author;
             mnew.Img = nw.Img;
             mnew.Link = nw.Link;
+            mnew.PubDate = nw.PubDate;
             return mnew;
         }
     }
